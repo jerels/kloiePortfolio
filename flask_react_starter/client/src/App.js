@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 
-import UserList from './components/UsersList';
+import Login from './components/Login';
 import AuthRoute from './components/AuthRoute';
 
 
@@ -20,8 +20,8 @@ function App() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/users">
-                    <UserList />
+                <Route path="/login">
+                    <Login />
                 </Route>
 
                 <AuthRoute path='/' component={ } />
