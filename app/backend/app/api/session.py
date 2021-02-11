@@ -23,3 +23,16 @@ def login():
         res = make_response(
             {'errors': [form.errors[error][0] for error in form.errors]}, 401)
         return res
+
+
+@session.route('/logout', methods=['DELETE'])
+def logout():
+    logout_user()
+    return {'message': 'Logged out'}
+
+
+@session.route('/csrf')
+def csrf():
+    res = make_response('set token')
+    res.set_cookie('XSRF-TOKEN', generate_csrf())
+    return res
