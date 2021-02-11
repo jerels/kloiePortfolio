@@ -33,7 +33,7 @@ const Login = ({ history }) => {
     };
 
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleSubmit}>
             <TextField type='password' value={password} onChange={onPasswordChange} />
         </form>
     )

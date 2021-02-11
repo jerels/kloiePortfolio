@@ -13,9 +13,11 @@ def login():
     data = MultiDict(mapping=request.json)
     form = LoginForm(data)
     if form.validate():
-        user = User.query.filter(User.username == 'kloie')
+        user = User.query.filter(User.username == 'kloie').first()
         if user and user.checkPassword(data['password']):
             login_user(user)
+            userLogged = user.to_dict()
+            return {'user': userLogged}
         else:
             res = make_response({'errors': ['User does not exist']}, 401)
             return res
