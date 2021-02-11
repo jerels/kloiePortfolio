@@ -23,8 +23,6 @@ function App() {
                 <Route path="/login">
                     <Login />
                 </Route>
-
-                <AuthRoute path='/' component={ } />
             </Switch>
         </BrowserRouter>
     );
