@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 
-import Login from './components/Login';
+import Login from './components/boh/Login';
 import AuthRoute from './components/AuthRoute';
 
 

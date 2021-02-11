@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { login } from '../store/session';
+import { login } from '../../store/session';
 
 const useStyles = makeStyles(theme => ({
     form: {
