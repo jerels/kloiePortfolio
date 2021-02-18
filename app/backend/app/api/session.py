@@ -13,9 +13,11 @@ def login():
     data = MultiDict(mapping=request.json)
     form = LoginForm(data)
     if form.validate():
-        user = User.query.filter(User.username == 'kloie')
+        user = User.query.filter(User.username == 'kloie').first()
         if user and user.checkPassword(data['password']):
             login_user(user)
+            userLogged = user.to_dict()
+            return {'user': userLogged}
         else:
             res = make_response({'errors': ['User does not exist']}, 401)
             return res
@@ -23,3 +25,16 @@ def login():
         res = make_response(
             {'errors': [form.errors[error][0] for error in form.errors]}, 401)
         return res
+
+
+@session.route('/logout', methods=['DELETE'])
+def logout():
+    logout_user()
+    return {'message': 'Logged out'}
+
+
+@session.route('/csrf')
+def csrf():
+    res = make_response('set token')
+    res.set_cookie('XSRF-TOKEN', generate_csrf())
+    return res
